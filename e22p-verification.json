@@ -1,0 +1,12 @@
+{
+  "artifact": "firmware-spicy_e22p_i2c-2.8.1.8e6a88d.uf2",
+  "sha256": "2660f2a7e093ff6dc94269fa1759b96a0ff59e40f26eefcb5e3069be3007ad6f",
+  "bytes": 1385472,
+  "blocks": 2706,
+  "family": "0xADA52840 (nRF52840)",
+  "address_min": "0x27000",
+  "address_end": "0xd0200",
+  "embedded_version": "2.8.1.8e6a88d",
+  "embedded_environment": "spicy_e22p_i2c",
+  "hardware_runtime_tested": false
+}
