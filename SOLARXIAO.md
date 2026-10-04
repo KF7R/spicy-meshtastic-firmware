@@ -6,7 +6,11 @@ The workflow checks out official Meshtastic commit `8e6a88d06f44cad26f1e8d7cd402
 
 ## Download
 
-Open [the SolarXiao build](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/37192846348). After a successful run, download the artifact **SolarXiao-Advanced-E22P-GPS-I2C-2.8.1**. It includes the UF2, linked ELF/HEX, board sources, build log, and UF2 validation record.
+Download [SolarXiao-2.8.1-ready-to-flash](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/37193231811/artifacts/11299538350). Its ZIP places the UF2 at the top level and includes the board sources, build log, and UF2 validation record. Linked ELF/HEX files are available in [the original build artifact](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/37192846348/artifacts/11300095598).
+
+Compilation and UF2 verification passed on October 4, 2026. Flash usage is 690,348 / 815,104 bytes (84.7%); static RAM is 96,532 / 248,832 bytes (38.8%). The UF2 has 2,697 blocks, family 0xADA52840, and application range 0x27000–0xCF900 including padding. The warm-region linker guard passed.
+
+UF2 SHA256: `b28ec37a4092bea6e3d2554835eda395758c3312afe8ccbce8a45458835596d6`. Packaging verified the same hash.
 
 ## Wiring
 
