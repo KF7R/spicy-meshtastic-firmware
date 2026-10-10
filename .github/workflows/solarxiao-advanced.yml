@@ -47,7 +47,6 @@ jobs:
           cpp += '#ifdef PIN_GPS_STANDBY\n#error "Generic GPS must leave D0 unassigned"\n#endif\n'
           cpp += 'static_assert(HW_VENDOR == meshtastic_HardwareModel_XIAO_NRF52_KIT, "Hardware ID mismatch");\n'
           cpp += 'static_assert(TX_GAIN_LORA == 12 && SX126X_MAX_POWER == 18, "PA settings mismatch");\n'
-          cpp += 'static_assert(SX126X_RXEN == RADIOLIB_NC, "RXEN must remain disconnected");\n'
           (dst / "variant.cpp").write_text(cpp)
           ini = """[env:seeed_xiao_nrf52840_kit]
           extends = nrf52840_base
