@@ -114,7 +114,7 @@ jobs:
           with zipfile.ZipFile(packages[0]) as z:
               assert z.testzip() is None
               manifest = json.loads(z.read("manifest.json"))["manifest"]
-              assert set(manifest) == {"application"}, manifest
+              assert "application" in manifest and set(manifest) <= {"application", "dfu_version"}, manifest
               app = manifest["application"]
               image = z.read(app["bin_file"])
               init = z.read(app["dat_file"])
@@ -199,5 +199,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SolarXiao-build-failure-log
-          path: build.log
+          path: |
+            build.log
+            uf2-validation.txt
+            .pio/build/seeed_xiao_nrf52840_kit/*.uf2
+            .pio/build/seeed_xiao_nrf52840_kit/*.hex
+            .pio/build/seeed_xiao_nrf52840_kit/*.zip
+            .pio/build/seeed_xiao_nrf52840_kit/*.mt.json
+          include-hidden-files: true
           if-no-files-found: ignore
