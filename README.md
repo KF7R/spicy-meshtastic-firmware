@@ -48,3 +48,14 @@ The build log, effective preprocessor definitions, UF2 validation result, and li
 ## Flashing
 
 Use this firmware on the XXtra Spicy nRF52840 E22P hardware with the wiring above. Save a configuration backup first if desired. Double-tap reset to enter its UF2 bootloader, then copy the supplied `.uf2` to the bootloader drive. Wait for the copy to finish and the device to restart. Reconnect and check that version `2.8.1.8e6a88d` is reported. Do not use an erase or factory-reset image for this update. An ordinary UF2 application update is intended to retain configuration, although preservation has not been tested on the user's hardware.
+
+## Build another version with GitHub Actions
+
+1. Open [Actions → Build E22P I2C firmware](https://github.com/KF7R/spicy-meshtastic-firmware/actions/workflows/build-e22p.yml).
+2. Choose **Run workflow** and enter an official `meshtastic/firmware` release tag or full commit SHA. The default is the previously built `v2.8.1.8e6a88d`; choose a newer tag explicitly.
+3. After a successful run, download the `spicy-e22p-i2c-<run number>` artifact. It includes the UF2, ELF/HEX, generated variant source and verification report. Artifacts expire after 90 days.
+4. Review upstream radio/power changes and test the device before relying on a new version. Automatic UF2 checks establish file structure and target, not RF performance.
+
+The workflow is manual only. It does not flash hardware, publish releases, or overwrite the original firmware. A changed upstream layout stops preparation for review. Hosted workflow execution has not yet been verified end to end.
+
+See [CHANGELOG.md](CHANGELOG.md) for changes and [CREDITS.md](CREDITS.md) for developer attribution, licensing and corresponding-source instructions. Portable source is in [variants/nrf52840/spicy_e22p_i2c](variants/nrf52840/spicy_e22p_i2c).
