@@ -59,3 +59,15 @@ Use this firmware on the XXtra Spicy nRF52840 E22P hardware with the wiring abov
 The workflow is manual only. It does not flash hardware, publish releases, or overwrite the original firmware. A changed upstream layout stops preparation for review. Hosted workflow execution has not yet been verified end to end.
 
 See [CHANGELOG.md](CHANGELOG.md) for changes and [CREDITS.md](CREDITS.md) for developer attribution, licensing and corresponding-source instructions. Portable source is in [variants/nrf52840/spicy_e22p_i2c](variants/nrf52840/spicy_e22p_i2c).
+
+## Android Bluetooth OTA package
+
+Download [firmware-spicy_e22p_i2c-2.8.1.8e6a88d-ota.zip](firmware-spicy_e22p_i2c-2.8.1.8e6a88d-ota.zip) using GitHub's **Download raw file** control. Keep this ZIP intact when selecting it as local firmware in an Android updater. The larger Spicy-E22P-I2C build bundle and GitHub artifact wrapper ZIPs are not DFU packages; extract an artifact wrapper once to obtain the inner `-ota.zip`.
+
+This package was generated from the existing verified E22P HEX using PlatformIO's bundled Adafruit nRF utility, with the upstream XIAO board settings: device type 0x0052 and SoftDevice requirement 0x0123. It contains an application BIN, DFU init DAT and manifest.json (legacy Nordic DFU 0.5); no bootloader or SoftDevice image. Its 692,652-byte firmware payload was compared byte for byte with the original UF2. ZIP integrity passed. SHA256: `102ec46b173919428aa8be6386b3f8d0a084f912e7830029d97e6bb8cb1bf844`.
+
+Android support depends on the installed app's local-file/legacy Nordic DFU support and the XIAO's installed bootloader and SoftDevice. These have not been identified or tested on this user's device. See [official Android update documentation](https://github.com/meshtastic/Meshtastic-Android/blob/main/docs/en/user/firmware.md). If local firmware is offered, connect by Bluetooth, open Settings → Advanced → Firmware Update and select this custom package. Do not select generic official Seeed firmware in place of the custom E22P build. If the updater rejects the package, stop and use USB UF2 recovery or investigate compatibility; do not replace the bootloader just to force the update.
+
+Back up configuration, keep the phone close and both devices powered throughout transfer, and have USB recovery available. No factory erase is needed. On-device OTA installation, radio performance and configuration preservation remain untested.
+
+Future manual builds include the OTA package in the main artifact and an `e22p-android-ota-<run number>` artifact. The collector checks manifest/application structure, ZIP integrity and agreement with the UF2 payload, and records an OTA checksum. No hardware control settings changed. See CREDITS.md for developer and dependency attribution.
