@@ -1,5 +1,13 @@
 # Changes
 
+## 2026-10-24
+
+- Added application-only Nordic DFU OTA ZIP for the existing verified E22P 2.8.1.8e6a88d firmware; no firmware or hardware-definition changes.
+- Generated with PlatformIO bundled Adafruit nRF utility, upstream device type0x0052 and SoftDevice0x0123, DFU0.5 format.
+- Verified ZIP integrity, manifest and application-only contents; BIN payload exactly matches original UF2.
+- Updated workflow collector to include upstream-generated DFU ZIP, check payload agreement and record checksum; added separate OTA artifact.
+- Documented Android selection, artifact-wrapper extraction and untested app/bootloader compatibility. Credits in CREDITS.md remain applicable.
+
 ## 2026-10-23
 
 - Added a manual GitHub Actions workflow, **Build E22P I2C firmware**, with an explicit official Meshtastic tag or commit input. Default remains the previously tested v2.8.1.8e6a88d; it does not silently select the newest alpha.
