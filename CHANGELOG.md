@@ -2,6 +2,8 @@
 
 ## 2026-10-24
 
+- Hosted baseline build [run #1](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/40077960007) succeeded through compilation, collector checks and both firmware/OTA artifact uploads.
+
 - Added application-only Nordic DFU OTA ZIP for the existing verified E22P 2.8.1.8e6a88d firmware; no firmware or hardware-definition changes.
 - Generated with PlatformIO bundled Adafruit nRF utility, upstream device type0x0052 and SoftDevice0x0123, DFU0.5 format.
 - Verified ZIP integrity, manifest and application-only contents; BIN payload exactly matches original UF2.
@@ -15,7 +17,7 @@
 - Preparation stops when expected upstream radio pin or initialization anchors change. This is a drift check, not a guarantee of compatibility with every future release.
 - Artifacts are retained for 90 days; no firmware release is published and no device is flashed automatically. The workflow token has read-only repository permissions.
 - Published the portable variant source, upstream license, credits and build instructions.
-- Local checks: Python syntax passed; generated variant header matched the previously built E22P header. The GitHub workflow has not yet completed an end-to-end hosted build.
+- Local checks: Python syntax passed; generated variant header matched the previously built E22P header. Initial local validation was followed by a successful end-to-end hosted build on October 24, 2026 (run40077960007).
 
 ## Original custom build
 
