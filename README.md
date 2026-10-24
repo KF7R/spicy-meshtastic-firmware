@@ -56,7 +56,7 @@ Use this firmware on the XXtra Spicy nRF52840 E22P hardware with the wiring abov
 3. After a successful run, download the `spicy-e22p-i2c-<run number>` artifact. It includes the UF2, ELF/HEX, generated variant source and verification report. Artifacts expire after 90 days.
 4. Review upstream radio/power changes and test the device before relying on a new version. Automatic UF2 checks establish file structure and target, not RF performance.
 
-The workflow is manual only. It does not flash hardware, publish releases, or overwrite the original firmware. A changed upstream layout stops preparation for review. Hosted workflow execution has not yet been verified end to end.
+The workflow is manual only. It does not flash hardware, publish releases, or overwrite the original firmware. A changed upstream layout stops preparation for review. Hosted baseline build [run #1](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/40077960007) passed end to end on October 24, 2026, including compilation, UF2/OTA payload checks and artifact upload.
 
 See [CHANGELOG.md](CHANGELOG.md) for changes and [CREDITS.md](CREDITS.md) for developer attribution, licensing and corresponding-source instructions. Portable source is in [variants/nrf52840/spicy_e22p_i2c](variants/nrf52840/spicy_e22p_i2c).
 
