@@ -1,0 +1,15 @@
+{
+  "artifact": "firmware-spicy_e22p_i2c-2.8.1.8e6a88d-ota.zip",
+  "sha256": "102ec46b173919428aa8be6386b3f8d0a084f912e7830029d97e6bb8cb1bf844",
+  "upstream_commit": "8e6a88d06f44cad26f1e8d7cd402939ccacb9b4c",
+  "uf2_sha256": "2660f2a7e093ff6dc94269fa1759b96a0ff59e40f26eefcb5e3069be3007ad6f",
+  "payload_bytes": 692652,
+  "application_only": true,
+  "payload_matches_uf2": true,
+  "dfu_version": 0.5,
+  "device_type": "0x0052",
+  "softdevice_requirement": "0x0123",
+  "zip_integrity_passed": true,
+  "hardware_tested": false,
+  "android_app_compatibility_tested": false
+}
