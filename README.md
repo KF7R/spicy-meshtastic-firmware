@@ -71,3 +71,7 @@ Android support depends on the installed app's local-file/legacy Nordic DFU supp
 Back up configuration, keep the phone close and both devices powered throughout transfer, and have USB recovery available. No factory erase is needed. On-device OTA installation, radio performance and configuration preservation remain untested.
 
 Future manual builds include the OTA package in the main artifact and an `e22p-android-ota-<run number>` artifact. The collector checks manifest/application structure, ZIP integrity and agreement with the UF2 payload, and records an OTA checksum. No hardware control settings changed. See CREDITS.md for developer and dependency attribution.
+
+### Android 2.8.3 check
+
+The tagged [v2.8.3 source](https://github.com/meshtastic/Meshtastic-Android/tree/v2.8.3) includes LegacyDfuProtocol and application ZIP parsing. Its [FirmwareFileHandler](https://github.com/meshtastic/Meshtastic-Android/blob/v2.8.3/feature/firmware/src/commonMain/kotlin/org/meshtastic/feature/firmware/FirmwareFileHandler.kt) requires a matching connected-device target and the `-ota.zip` suffix. The published filename matches `spicy_e22p_i2c`. A node still advertising an older developer environment or a generic Seeed target may reject the filename. Check the installed target before updating; do not rename arbitrary firmware to bypass a target check. Protocol support in source is not a completed on-device compatibility test.
