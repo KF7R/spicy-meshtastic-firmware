@@ -33,12 +33,18 @@ jobs:
         run: |
           set -o pipefail
           pio run -d firmware -e spicy_e22p_i2c 2>&1 | tee build.log
-      - name: Collect verified UF2 and build provenance
+      - name: Collect verified UF2, OTA ZIP and build provenance
         run: python tools/collect_e22p.py firmware
       - uses: actions/upload-artifact@v4
         with:
           name: spicy-e22p-i2c-${{ github.run_number }}
           path: output/
+          if-no-files-found: error
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e22p-android-ota-${{ github.run_number }}
+          path: output/*-ota.zip
           if-no-files-found: error
           retention-days: 90
       - uses: actions/upload-artifact@v4
