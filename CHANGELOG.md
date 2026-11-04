@@ -1,5 +1,15 @@
 # Changes
 
+## 2026-11-04
+
+- Added standard E22P/I2C alpha v2.8.2.d5f1619, upstream d5f16191ca28b01b5024f590f04a67f25d66f1b1; retained all 2.8.1 downloads.
+- Standard build [41800952073](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/41800952073) passed compilation and UF2/OTA checks.
+- Added a separately named experimental environment spicy_e22p_i2c_pr10531 with USERPREFS_MQTT_UPLINK_ALL_SEEN=1, adapted from ianmcorvidae PR10531 head40ac9fb. Added a pinned manual workflow, port script, focused C++ regression tests and detailed scope/credits.
+- Unlike the older PR, normal dispatch and opaque-PKI uplinking remain unchanged. Only authenticated decoded duplicates and hop-upgrade copies are additionally submitted to existing MQTT policy checks. Non-success decode states, ignored/pre-hop/policy-rejected input and MQTT-loop input are not added.
+- Experimental build [41802323525](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/41802323525) passed host helper regressions, full nRF52840 compilation and UF2/OTA payload validation. ELF inspection confirms the duplicate helper is compiled in.
+- E22P hardware settings retained (D5 HIGH, gain8, chip max22, I2C6/7). Binary/source packages, checksums and corresponding adapted source published separately.
+- No hardware flashed. Live duplicate MQTT analytics, radio/sensor behavior, and recovery from the previous BLE verification timeout remain untested. This experimental build is for bench testing before mast deployment.
+
 ## 2026-10-24
 
 - Hosted baseline build [run #1](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/40077960007) succeeded through compilation, collector checks and both firmware/OTA artifact uploads.
