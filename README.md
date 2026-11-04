@@ -1,4 +1,15 @@
-# XXtra Spicy E22P / I2C alpha build
+# XXtra Spicy E22P / I2C firmware
+
+## New 2.8.2 alpha builds (2026-11-04)
+
+The 2.8.1 firmware downloads below are retained. New builds use official **v2.8.2.d5f1619** (d5f16191ca28b01b5024f590f04a67f25d66f1b1), not the revoked 2.8.2 release.
+
+- **Standard E22P/I2C:** [build and artifacts](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/41800952073), environment spicy_e22p_i2c. Compilation and UF2/OTA validation passed.
+- **Experimental duplicate MQTT uplinks:** separate environment spicy_e22p_i2c_pr10531. See [scope, credits, source and test plan](docs/PR10531-2.8.2.md). This is a conservative adaptation of PR10531, not an unmodified cherry-pick. It preserves normal dispatch and opaque-PKI handling and only adds accepted decoded duplicates.
+
+No hardware is flashed by these workflows. MQTT analytics must be tested on a private broker with a working nRF52 client proxy/transport. The previous BLE verification timeout remains unresolved; do not infer mast-ready OTA recovery from a successful build. Alpha 2.8.2 also changes XEdDSA signing and licensed-mode verification behavior; review the [upstream release notes](https://github.com/meshtastic/firmware/releases/tag/v2.8.2.d5f1619).
+
+## Retained 2.8.1 build
 
 This build ports the published E22P changes from [ascendr/firmware cb718ee5](https://github.com/ascendr/firmware/commit/cb718ee5ff294739232a5efefd4b53c8f6720af8) to [official Meshtastic v2.8.1.8e6a88d](https://github.com/meshtastic/firmware/releases/tag/v2.8.1.8e6a88d). GitHub's releases API identified this as the latest published alpha during this task on October 1, 2026 (America/Phoenix).
 
