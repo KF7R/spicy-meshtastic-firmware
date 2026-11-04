@@ -16,3 +16,7 @@ Meshtastic's GNU GPL version 3 license is included in LICENSE. Existing upstream
 For the original distributed binary, obtain official firmware commit `8e6a88d06f44cad26f1e8d7cd402939ccacb9b4c`, initialize its recursive submodules, and overlay this repository's `variants/nrf52840/spicy_e22p_i2c/` directory. Run `pio run -e spicy_e22p_i2c`. The source archive of that exact upstream revision is https://github.com/meshtastic/firmware/archive/8e6a88d06f44cad26f1e8d7cd402939ccacb9b4c.tar.gz ; use the Git checkout for recursive submodules and retain upstream dependency definitions.
 
 Manual workflow builds record the exact upstream commit in verification.json and include the generated variant source with their artifacts. They may not reproduce the original UF2 byte-for-byte.
+
+## 2.8.2 MQTT experiment
+
+Credit to **ianmcorvidae** for [PR10531](https://github.com/meshtastic/firmware/pull/10531), head 40ac9fb1099680f93411786e82f0a471de5e1555, and the duplicate-uplink analytics design. The port here was adapted with Codex assistance to official Meshtastic d5f16191ca28b01b5024f590f04a67f25d66f1b1. It is not an upstream-approved merge or the original patch verbatim. New alpha authentication, routing and MQTT implementations remain credited to their Meshtastic contributors. See docs/PR10531-2.8.2.md for departures and source reproduction.
