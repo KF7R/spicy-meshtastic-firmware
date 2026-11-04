@@ -1,0 +1,57 @@
+name: Experimental E22P PR10531 alpha
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  experimental:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: meshtastic/firmware
+          ref: d5f16191ca28b01b5024f590f04a67f25d66f1b1
+          path: firmware
+          submodules: recursive
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install platformio==6.1.18
+      - name: Apply E22P hardware and reviewed PR adaptation
+        run: |
+          python tools/prepare_e22p.py firmware
+          python tools/port_pr10531.py firmware
+          git -C firmware diff --check
+      - name: Test duplicate MQTT logic and preserved ingress behavior
+        run: python tools/test_pr10531.py firmware
+      - name: Compile experimental firmware
+        shell: bash
+        run: |
+          set -o pipefail
+          pio run -d firmware -e spicy_e22p_i2c_pr10531 2>&1 | tee build-pr10531.log
+      - name: Verify UF2 and OTA and collect corresponding source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+          script = Path('tools/collect_e22p.py').read_text().replace('spicy_e22p_i2c', 'spicy_e22p_i2c_pr10531')
+          Path('collect_experiment.py').write_text(script)
+          subprocess.run(['python', 'collect_experiment.py', 'firmware'], check=True)
+          PY
+          git -C firmware diff --binary > output/pr10531-adapted.patch
+          cp docs/PR10531-2.8.2.md output/
+          cp tools/port_pr10531.py tools/test_pr10531.py output/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: experimental-e22p-2.8.2-pr10531-${{ github.run_number }}
+          path: output/
+          if-no-files-found: error
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: experimental-build-log-${{ github.run_number }}
+          path: build-pr10531.log
