@@ -1,0 +1,13 @@
+{
+  "upstream_commit": "d5f16191ca28b01b5024f590f04a67f25d66f1b1",
+  "uf2": "firmware-spicy_e22p_i2c_pr10531-2.8.2.d5f1619.uf2",
+  "sha256": "b8ccb6f41a76e0322092c67aaa62be0f14d7e49fa1f8e34f9b57b3a0e0ab8cd5",
+  "family": "nRF52840",
+  "blocks": 2781,
+  "environment": "spicy_e22p_i2c_pr10531",
+  "ota_zip": "firmware-spicy_e22p_i2c_pr10531-2.8.2.d5f1619-ota.zip",
+  "ota_sha256": "6f8bde8757907ad839111b4e4655c0858ba9b5f7f11c8a7aa9c9db54d0bef5d3",
+  "ota_payload_matches_uf2": true,
+  "hardware_tested": false,
+  "developer_recipe": "ascendr/firmware cb718ee5ff294739232a5efefd4b53c8f6720af8"
+}
