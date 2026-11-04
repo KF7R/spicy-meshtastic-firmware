@@ -5,9 +5,18 @@
 The 2.8.1 firmware downloads below are retained. New builds use official **v2.8.2.d5f1619** (d5f16191ca28b01b5024f590f04a67f25d66f1b1), not the revoked 2.8.2 release.
 
 - **Standard E22P/I2C:** [build and artifacts](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/41800952073), environment spicy_e22p_i2c. Compilation and UF2/OTA validation passed.
-- **Experimental duplicate MQTT uplinks:** separate environment spicy_e22p_i2c_pr10531. See [scope, credits, source and test plan](docs/PR10531-2.8.2.md). This is a conservative adaptation of PR10531, not an unmodified cherry-pick. It preserves normal dispatch and opaque-PKI handling and only adds accepted decoded duplicates.
+- **Experimental duplicate MQTT uplinks:** [successful build and tests](https://github.com/KF7R/spicy-meshtastic-firmware/actions/runs/41802323525), separate environment spicy_e22p_i2c_pr10531. See [scope, credits, source and test plan](docs/PR10531-2.8.2.md). This is a conservative adaptation of PR10531, not an unmodified cherry-pick. It preserves normal dispatch and opaque-PKI handling and only adds accepted decoded duplicates.
 
 No hardware is flashed by these workflows. MQTT analytics must be tested on a private broker with a working nRF52 client proxy/transport. The previous BLE verification timeout remains unresolved; do not infer mast-ready OTA recovery from a successful build. Alpha 2.8.2 also changes XEdDSA signing and licensed-mode verification behavior; review the [upstream release notes](https://github.com/meshtastic/firmware/releases/tag/v2.8.2.d5f1619).
+
+### Versioned downloads
+
+| Build | USB application | Bluetooth application | Source/build bundle |
+|---|---|---|---|
+| Standard alpha | [UF2](firmware-spicy_e22p_i2c-2.8.2.d5f1619.uf2) | [OTA ZIP](firmware-spicy_e22p_i2c-2.8.2.d5f1619-ota.zip) | [Bundle](Spicy-E22P-I2C-2.8.2.d5f1619.zip) |
+| Experimental PR10531 | [UF2](firmware-spicy_e22p_i2c_pr10531-2.8.2.d5f1619.uf2) | [OTA ZIP](firmware-spicy_e22p_i2c_pr10531-2.8.2.d5f1619-ota.zip) | [Bundle](Spicy-E22P-I2C-2.8.2.d5f1619-PR10531-experimental.zip) |
+
+Use GitHub's Download raw file button. Keep the OTA ZIP intact; the source/build bundle is not an OTA image. The experimental environment has a distinct target name and Android may reject it when the installed firmware advertises another target. Use the correct UF2 over USB for the initial experimental install rather than bypassing the target check by renaming. Hardware testing is still required. Versioned checksums are in [verification/](verification/).
 
 ## Retained 2.8.1 build
 
